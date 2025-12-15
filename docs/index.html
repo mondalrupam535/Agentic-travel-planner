@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Agentic Travel Planner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <!-- Icons (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Leaflet for maps -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar glass-card">
+      <div class="brand">
+        <h1>Agentic Travel Planner</h1>
+        <p class="subtitle">AI-driven day-by-day itineraries from a prompt + image.</p>
+      </div>
+      <div class="top-actions">
+        <div class="controls">
+          <label class="switch"><input id="darkToggle" type="checkbox"/><span class="slider"></span></label>
+          <small class="muted">Dark</small>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-grid">
+      <section class="panel-left glass-card">
+        <div class="section-title">Create Itinerary</div>
+
+        <label for="prompt">Trip description</label>
+        <textarea id="prompt" class="prompt-box" placeholder="E.g. 7-day foodie and nature trip to Kyoto in spring..." rows="5"></textarea>
+
+        <div class="options-row">
+          <div class="field small">
+            <label for="days">Days</label>
+            <input id="days" type="number" min="1" max="30" value="5" />
+          </div>
+          <div class="field small">
+            <label for="style">Trip style</label>
+            <select id="style">
+              <option>Leisure</option>
+              <option>Foodie</option>
+              <option>Adventure</option>
+              <option>Romantic</option>
+              <option>Family</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="image">Aesthetic image (optional)</label>
+        <input id="image" type="file" accept="image/*" />
+
+        <div class="actions">
+          <button id="suggest" class="glass-btn btn-alt">Suggestion</button>
+          <button id="generate" class="glass-btn btn-gradient">Generate Itinerary</button>
+          <div id="loading" class="loading" aria-hidden="true">Generating…</div>
+        </div>
+      </section>
+
+      <aside class="panel-right">
+        <div class="glass-card side-widget">
+          <div class="section-title">AI Suggestions</div>
+            <div id="suggestion" class="widget-body">Try "Suggestion" to get a quick suggestion.</div>
+        </div>
+
+        <div class="glass-card side-widget">
+          <div class="section-title">Travel History</div>
+          <div id="history" class="widget-body">No history yet.</div>
+          <button id="deleteHistoryBtn" class="glass-btn" style="margin-top: 10px; font-size: 0.9rem; padding: 8px 12px; width: 100%;">Delete History</button>
+        </div>
+      </aside>
+    </div>
+
+    <section id="output" class="output-area"></section>
+
+    <footer class="footer glass-card">
+      <small>Developed by team Gemini innovators</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  
+</body>
+</html>
